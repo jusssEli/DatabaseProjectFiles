@@ -1,40 +1,41 @@
-create table room
-	(room_id		varchar(20),
-         name                   varchar(20),
-	 max_capacity		numeric(4,0),
-         location_id            varchar(20),
-         location_description   varchar(100),
-	 primary key (room_id)
-         foreign key (location_id) references location (location_id)
-	);
-
-create table location
-	(location_id		varchar(20), 
+create table building
+	(building_id		varchar(20), 
 	 name			varchar(20), 
 	 address_number         varchar(20),
          street_name            varchar(20),
          city                   varchar(20),
          state                  varchar(2),
-	 primary key (dept_name)
+	 primary key (building_id)
+	);
+
+create table room
+	(room_id		varchar(20),
+         name                   varchar(20),
+	 max_capacity		numeric(4,0),
+         building_id            varchar(20),
+         building_description   varchar(100),
+	 primary key (room_id),
+         foreign key (building_id) references building(building_id)
 	);
 
 create table employee
 	(emp_id			varchar(20), 
 	 name			varchar(20) not null,
          phone                  varchar(20),
-         email                  varchar(20) 
+         email                  varchar(20), 
 	 primary key (emp_id)
 	);
 
 create table supervises
-	(super_id		varchar(20),
+	(supervises_entry	numeric(20),
+	 super_id		varchar(20),
 	 emp_id			varchar(20),
-	 primary key (super_id),
-	 foreign key (super_id) references employee (emp_id)
-		on delete set null,
-	 foreign key (emp_id) references employee (emp_id)
+	 primary key (supervises_entry),
+  	 foreign key (super_id) references employee (emp_id),
+	 foreign key (emp_id) references employee(emp_id)
 		on delete cascade
 	);
+
 
 create table meeting
 	(meeting_id		varchar(20),
@@ -47,19 +48,18 @@ create table meeting
 	 start_min		numeric(2) check (start_min >= 0 and start_min < 60),
 	 end_hr			numeric(2) check (end_hr >= 0 and end_hr < 24),
 	 end_min		numeric(2) check (end_min >= 0 and end_min < 60),
-	 primary key (meeting_id)
+	 primary key (meeting_id),
          foreign key (host) references employee (emp_id),
-         foreign key (room_id) references room (room_id),
-         foreign key (meeting_id) references attendees (meeting_id)
+         foreign key (room_id) references room (room_id)
 	);
 
 create table attendees
-        (meeting_id		varchar(20),
+        (attendees_entry	numeric(20), 
+	meeting_id		varchar(20),
 	emp_id                  varchar(20),
         attended		varchar(10),
-        primary key (meeting_id),
+        primary key (attendees_entry),
 	foreign key (meeting_id) references meeting (meeting_id),
 	foreign key (emp_id) references employee (emp_id)
         );
-
 

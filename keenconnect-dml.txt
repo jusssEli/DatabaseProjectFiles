@@ -1,0 +1,29 @@
+delete from room;
+delete from building;
+delete from supervises;
+delete from attendees;
+delete from meeting;
+delete from employee;
+
+insert into building values("2222", "MSB", "1300", "Lefton Esplanade", "Kent", "OH");
+insert into building values("1111", "Library", "1125", "Risman Dr.", "Kent", "OH");
+
+insert into room values("1111","Print Center","200","1111","First floor of library");
+insert into room values("00228","MSB00228","75","2222","Second floor lecture hall in MSB");
+
+insert into employee values("111","Konnor Duncan","4123123123","gmail@gmail.com");
+insert into employee values("222","Avery Wallace","4123123123","gmail@gmail.com");
+insert into employee values("333","Eli Rogers","4123123123","gmail@gmail.com");
+insert into employee values("444","Megan Austin","4123123123","gmail@gmail.com");
+insert into employee values("555","Breana Lowrey","4123123123","gmail@gmail.com");
+
+insert into supervises values("1","111","222");
+insert into supervises values("2","111","333");
+insert into supervises values("3","111","444");
+insert into supervises values("4","111","555");
+
+insert into meeting values("1111","1111","111","04","30","2024","15","30","17","0");
+insert into meeting values("2222","00228","111","05","09","2024","11","0","12","15");
+
+insert into attendees values("1","1111", "222", "present");
+insert into attendees values("44","2222", "555", "upcoming");
