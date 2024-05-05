@@ -12,7 +12,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Faculty View</title>
+    <title>Meeting View</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body{ font: 14px sans-serif; text-align: center; }
@@ -23,13 +23,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to the University Information System.</h1>
     <p><nav class="nav justify-content-center">
     <a href="welcome.php" class="nav-item nav-link active">Home</a>
-    <a href="faculty-table.php" class="nav-item nav-link">View Faculty</a>
+    <a href="faculty-table.php" class="nav-item nav-link">View Meetings</a>
     <a href="faculty-search.php" class="nav-item nav-link">Search Faculty</a>
     <a href="newfaculty.php" class="nav-item nav-link">Enter New Faculty</a>
     <a href="delfaculty.php" class="nav-item nav-link" tabindex="-1">Delete Faculty</a>
 </nav>
 
-<p><h2>List of University Faculty Members:</h2></p>
+<p><h2>List of Faculty Meetings:</h2></p>
 
 <?php // this line starts PHP Code
 $servername = "localhost";
@@ -44,15 +44,20 @@ $dbname = "wreed6";
    die("Connection failed: " . $conn->connect_error);
    }
 
-   $sql = "SELECT id, name, dept_name FROM instructor";
+   $sql = "select room_id, building_name, room name, building address_number street_name city  state, meeting start_hr, meeting start_min, meeting end_hr, meeting end_min
+ From attendees where emp_id = X and attended = “upcoming";
+ // "SELECT id, name, dept_name FROM instructor";
    $result = $conn->query($sql);
 
    if ($result->num_rows > 0) {
      	// Setup the table and headers
-	echo "<Center><table><tr><th>ID</th><th>Name</th><th>Department</th></tr>";
+	echo "<Center><table><tr><th>Room No.</th><th>Building</th><th>Room Name</th><th>Address</th></tr>";
 	// output data of each row into a table row
-	 while($row = $result->fetch_assoc()) {
-		 echo "<tr><td>".$row["id"]."</td><td>".$row["name"]."</td><td> ".$row["dept_name"]."</td></tr>";
+	 // while($row = $result->fetch_assoc()) {
+		//  echo "<tr><td>".$row["id"]."</td><td>".$row["name"]."</td><td> ".$row["dept_name"]."</td></tr>";
+	 // }
+	   while($row = $result->fetch_assoc()) {
+		 echo "<tr><td>".$row["Room No"]."</td><td>".$row["Building"]."</td><td> ".$row["Room Name"]."</td><td> ".$row["Address"]."</td></tr>";
 	 }
 
 	echo "</table></center>"; // close the table
