@@ -14,7 +14,7 @@
     <div class="wrapper">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
-        <form action="/~wreed6/login/register.php" method="post">
+        <form action="/~eroger25/login/register.php" method="post"> <!-- wreed6 was where eroger25 is-->
             <div class="form-group">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control " value="">
