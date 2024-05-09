@@ -16,7 +16,7 @@
         <p>Please fill in your credentials to login.</p>
 
         
-        <form action="/~wreed6/login/index.php" method="post">
+        <form action="/~eroger25/login/index.php" method="post"> <!-- wreed6 was where eroegr25 is -->
             <div class="form-group">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control " value="">
